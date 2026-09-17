@@ -1,13 +1,13 @@
 from pathlib import Path
 import sys
 
-LAB_ROOT = Path("")
-SRC = LAB_ROOT / "src"/"MLOps"
+LAB_ROOT = Path(__file__).resolve().parents[2]
+SRC = LAB_ROOT / "src" / "MLOps"
 TEST = LAB_ROOT / "tests"
-DATA = LAB_ROOT / "data"/ "raw"
+DATA = LAB_ROOT / "data" / "raw"
 MODELS = LAB_ROOT / "models"
 REPORTS = LAB_ROOT / "reports"
-WORKFLOWS = LAB_ROOT / ".github"/ "workflows"
+WORKFLOWS = LAB_ROOT / ".github" / "workflows"
 
 
 if __name__ == "__main__":

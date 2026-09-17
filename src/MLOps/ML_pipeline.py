@@ -12,7 +12,7 @@ result = subprocess.run([sys.executable, "-m", "pytest", "-v"], cwd=LAB_ROOT, en
 if result.returncode != 0:
     print(result.stdout)
     print(result.stderr)
-raise SystemExit(f"Validation Test failed. Returncode: {result.returncode}"if result.returncode != 0 else "Validation Test passed.")
-
+    raise SystemExit(result.returncode)
+print("Validation Test passed.")
 # Validate generated data
 subprocess.run([sys.executable, "-m", "MLOps.data_validation"], cwd=LAB_ROOT, env=env, check=True)          
