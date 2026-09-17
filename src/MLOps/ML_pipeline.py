@@ -1,5 +1,5 @@
 import sys, subprocess, os
-from MLOps.config import LAB_ROOT
+from MLOps.config import LAB_ROOT, VERBOSE
 
 env = os.environ.copy()
 env["PYTHONPATH"] = str((LAB_ROOT / "src").resolve())
@@ -9,6 +9,8 @@ subprocess.run([sys.executable, "-m", "MLOps.data_generation"], cwd=LAB_ROOT, en
 
 # Test data validation pipeline
 result = subprocess.run([sys.executable, "-m", "pytest", "-v"], cwd=LAB_ROOT, env=env, text=True, capture_output=True)
+if VERBOSE:
+    print(result.stdout)
 if result.returncode != 0:
     print(result.stdout)
     print(result.stderr)

@@ -1,6 +1,8 @@
 from pathlib import Path
 import sys
 
+VERBOSE = True
+
 LAB_ROOT = Path(__file__).resolve().parents[2]
 SRC = LAB_ROOT / "src" / "MLOps"
 TEST = LAB_ROOT / "tests"
@@ -15,5 +17,5 @@ if __name__ == "__main__":
         p.mkdir(parents=True, exist_ok=True)
     (SRC / "__init__.py").touch() 
     if str(SRC) not in sys.path:
-	    sys.path.insert(0, str(SRC))
+        sys.path.insert(0, str(SRC))
     print(f"Project structure created at {LAB_ROOT.resolve()}")

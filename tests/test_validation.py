@@ -1,5 +1,4 @@
 import pandas as pd
-import pytest
 from MLOps.data_validation import validate_dataframe
 
 def valid_df():
