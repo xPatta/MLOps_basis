@@ -1,0 +1,16 @@
+# Simple single-service Docker Compose configuration for the ML pipeline
+services:
+  ml-pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+    container_name: mlops-pipeline
+
+    command: python src/ML_pipeline.py
