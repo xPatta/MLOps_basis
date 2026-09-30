@@ -8,7 +8,7 @@ env["PYTHONPATH"] = str((LAB_ROOT / "src").resolve())
 subprocess.run([sys.executable, "-m", "data_generation"], cwd=LAB_ROOT, env=env, check=True)
 
 # Test data validation pipeline
-result = subprocess.run([sys.executable, "-m", "pytest", "-v"], cwd=LAB_ROOT, env=env, text=True, capture_output=True)
+result = subprocess.run([sys.executable, "-m", "pytest", "-v", "-p no:cacheprovider"], cwd=LAB_ROOT, env=env, text=True, capture_output=True)
 if VERBOSE:
     print(result.stdout)
 if result.returncode != 0:
