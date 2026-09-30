@@ -1,5 +1,5 @@
 import pandas as pd
-from MLOps.data_validation import validate_dataframe
+from data_validation import validate_dataframe
 
 def valid_df():
     return pd.DataFrame({

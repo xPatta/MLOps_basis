@@ -3,8 +3,8 @@ import sys
 
 VERBOSE = True
 
-LAB_ROOT = Path(__file__).resolve().parents[2]
-SRC = LAB_ROOT / "src" / "MLOps"
+LAB_ROOT = Path(__file__).resolve().parents[1]
+SRC = LAB_ROOT / "src"
 TEST = LAB_ROOT / "tests"
 DATA = LAB_ROOT / "data" / "raw"
 MODELS = LAB_ROOT / "models"
