@@ -14,7 +14,7 @@ COPY pyproject.toml README.md ./
 COPY src ./src
 RUN python -m pip install --no-cache-dir . pytest
 
-# Stage 2: create tester stage from the builder, inheriting everything inside, then test the project
+# Stage 2: create tester stage from the builder, inheriting everything inside, then test the data validation pipeline (test will run on custom df, not on real data)
 FROM builder AS tester
 
 COPY tests ./tests
@@ -41,7 +41,6 @@ COPY models ./models
 RUN mkdir -p /app/data /app/logs \
     && chown -R appuser:appuser /app/data /app/logs
 
-
 # Set env variables
 ENV PATH="/opt/venv/bin:$PATH" \
     PYTHONPATH="/app/src" \
@@ -53,6 +52,6 @@ USER appuser
 # Start ML Pipeline
 CMD ["python", "src/ML_pipeline.py"]
 
-# In case of webservers, uncomment to expose the port and run the server
+# In case of webservers, uncomment to expose the port and run the server (could be here for docu and in compose for actual port mapping)
 # EXPOSE 8080
 # CMD ["uvicorn", "app.main:app", " -- host", "e.e.e.e", " -- port", "8860"]

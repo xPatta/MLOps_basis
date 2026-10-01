@@ -1,6 +1,8 @@
 # Simple single-service Docker Compose configuration for the ML pipeline
 services:
   ml-pipeline:
+    # ports:
+    #   - "8080:8080"
     build:
       context: .
       dockerfile: Dockerfile
