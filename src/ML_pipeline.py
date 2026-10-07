@@ -1,5 +1,5 @@
 import sys, subprocess, os
-from config import LAB_ROOT, VERBOSE
+from config import LAB_ROOT, VERBOSE, MODELS, REPORTS
 
 env = os.environ.copy()
 env["PYTHONPATH"] = str((LAB_ROOT / "src").resolve())
@@ -18,3 +18,12 @@ if result.returncode != 0:
 print("Validation Test passed.")
 # Validate generated data
 subprocess.run([sys.executable, "-m", "data_validation"], cwd=LAB_ROOT, env=env, check=True)          
+
+# Train model
+subprocess.run([sys.executable, "-m", "train"], cwd=LAB_ROOT, env=env, check=True)
+
+if VERBOSE:
+    print("Model training completed. Artifacts:")
+    print(" -", MODELS / "churn_model.joblib" if (MODELS / "churn_model.joblib").exists() else "no model found")
+    print(" -", REPORTS / "metrics.json" if (REPORTS / "metrics.json").exists() else "no metrics found")
+    print(" -", REPORTS / "model_card.md" if (REPORTS / "model_card.md").exists() else "no model card found")
