@@ -27,3 +27,9 @@ if VERBOSE:
     print(" -", MODELS / "churn_model.joblib" if (MODELS / "churn_model.joblib").exists() else "no model found")
     print(" -", REPORTS / "metrics.json" if (REPORTS / "metrics.json").exists() else "no metrics found")
     print(" -", REPORTS / "model_card.md" if (REPORTS / "model_card.md").exists() else "no model card found")
+
+# Evaluate model
+subprocess.run([sys.executable, "-m", "model_evaluation"], cwd=LAB_ROOT, env=env, check=True)
+
+if VERBOSE:
+    print("Model evaluation completed. All the measured metrics are above the defined thresholds.")

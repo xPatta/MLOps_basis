@@ -3,6 +3,7 @@ import sys
 
 VERBOSE = True
 
+# Path definition
 LAB_ROOT = Path(__file__).resolve().parents[1]
 SRC = LAB_ROOT / "src"
 TEST = LAB_ROOT / "tests"
@@ -10,6 +11,10 @@ DATA = LAB_ROOT / "data" / "raw"
 MODELS = LAB_ROOT / "models"
 REPORTS = LAB_ROOT / "reports"
 WORKFLOWS = LAB_ROOT / ".github" / "workflows"
+
+# Business requirements
+ACCURACY_THRESHOLD = 0.60
+F1_SCORE_THRESHOLD = 0.55
 
 
 if __name__ == "__main__":
